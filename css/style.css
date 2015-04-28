@@ -86,8 +86,7 @@ body {
 	font-size: 60px;
 	font-weight: bold;
 	text-align: center;
-	color: #b3b3b3;
-	color: rgba(255, 255, 255, 0.3);
+	color: black;
 	text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
 	-webkit-text-rendering: optimizeLegibility;
 	-moz-text-rendering: optimizeLegibility;
@@ -426,4 +425,13 @@ label[for='toggle-all'] {
 
 .hidden{
 	display:none;
+}
+
+@media (max-width: 553px) {
+	#organizer h1 {
+		font-size: 40px;
+	}
+	#new-item {
+		font-size: 20px;
+	}
 }
