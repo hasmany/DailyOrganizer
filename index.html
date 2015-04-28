@@ -23,48 +23,50 @@
   <body>
     <!-- Main container -->
     <script type="text/x-handlebars" data-template-name="items">
-      <section id="todoapp">
-        <!-- New item input -->
-        <header id="header">
-          <h1>Organizer</h1>
-          {{input
-            type="text"
-            id="new-todo"
-            placeholder="What needs to be done?"
-            value=newTitle
-            action="createItem"
-          }}
-        </header>
-       <!-- Item Display -->
-        <section id="main">
+      <div class="container"
+        <section id="organizer">
+          <!-- New item input -->
+          <header id="header">
+            <h1>Organizer</h1>
+            {{input
+              type="text"
+              id="new-item"
+              placeholder="What needs to be done?"
+              value=newTitle
+              action="createItem"
+            }}
+          </header>
+         <!-- Item Display -->
+          <section id="main">
 
-          {{outlet}}
-          <input type="checkbox" id="toggle-all">
+            {{outlet}}
+            <input type="checkbox" id="toggle-all">
+          </section>
+          <footer id="footer">
+            <span id="todo-count">
+              <strong>{{remaining}}</strong> {{inflection}} left
+            </span>
+            <ul id="filters">
+              <li>
+                <a href="all" class="selected">All</a>
+              </li>
+              <li>
+                {{#link-to "items.active" activeClass="selected"}}Active{{/link-to}}
+              </li>
+              <li>
+                <a href="completed" class="Completed">Completed</a>
+              </li>
+            </ul>
+
+            <button id="clear-completed">
+              Clear completed (1)
+            </button>
+          </footer>
         </section>
-        <footer id="footer">
-          <span id="todo-count">
-            <strong>{{remaining}}</strong> {{inflection}} left
-          </span>
-          <ul id="filters">
-            <li>
-              <a href="all" class="selected">All</a>
-            </li>
-            <li>
-              {{#link-to "items.active" activeClass="selected"}}Active{{/link-to}}
-            </li>
-            <li>
-              <a href="completed" class="Completed">Completed</a>
-            </li>
-          </ul>
-
-          <button id="clear-completed">
-            Clear completed (1)
-          </button>
-        </footer>
-      </section>
-      <footer id="info">
-        <p>Double-click to edit a todo</p>
-      <footer>
+        <footer id="info">
+          <p>Double-click to edit a todo</p>
+        <footer>
+      </div>
     </script>
 
     <script type="text/x-handlebars" data-template-name="items/index">

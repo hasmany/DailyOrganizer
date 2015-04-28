@@ -34,3 +34,4 @@ Organizer.ItemsActiveRoute = Ember.Route.extend({
     this.render('items/index', {controller: controller})
   }
 });
+

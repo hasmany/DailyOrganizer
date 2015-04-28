@@ -4,6 +4,14 @@ body {
 	padding: 0;
 }
 
+html {
+  background: url('../img/Desk.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 button {
 	margin: 0;
 	padding: 0;
@@ -23,9 +31,8 @@ button {
 body {
 	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	line-height: 1.4em;
-	background: #eaeaea url('bg.png');
+	/*background: #eaeaea url('bg.png');*/
 	color: #4d4d4d;
-	width: 550px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
@@ -34,11 +41,16 @@ body {
 	font-smoothing: antialiased;
 }
 
-#todoapp {
+.container {
+	width: 80%;
+	max-width: 900px;
+	margin-top: 155px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#organizer {
 	background: #fff;
 	background: rgba(255, 255, 255, 0.9);
-
-	margin: 130px 0 40px 0;
 	border: 1px solid #ccc;
 	position: relative;
 	border-top-left-radius: 2px;
@@ -47,7 +59,7 @@ body {
 				0 25px 50px 0 rgba(0, 0, 0, 0.15);
 }
 
-#todoapp:before {
+#organizer:before {
 	content: '';
 	border-left: 1px solid #f5d6d6;
 	border-right: 1px solid #f5d6d6;
@@ -58,16 +70,16 @@ body {
 	height: 100%;
 }
 
-#todoapp input::-webkit-input-placeholder {
+#organizer input::-webkit-input-placeholder {
 	font-style: italic;
 }
 
-#todoapp input:-moz-placeholder {
+#organizer input:-moz-placeholder {
 	font-style: italic;
 	color: #a9a9a9;
 }
 
-#todoapp h1 {
+#organizer h1 {
 	position: absolute;
 	top: -120px;
 	width: 100%;
@@ -110,7 +122,7 @@ body {
 	border-top-right-radius: 1px;
 }
 
-#new-todo,
+#new-item,
 .edit {
 	position: relative;
 	margin: 0;
@@ -136,7 +148,7 @@ body {
 	font-smoothing: antialiased;
 }
 
-#new-todo {
+#new-item {
 	padding: 16px 16px 16px 60px;
 	border: none;
 	background: rgba(0, 0, 0, 0.02);
