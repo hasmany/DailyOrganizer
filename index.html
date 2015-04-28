@@ -48,20 +48,21 @@
             </span>
             <ul id="filters">
               <li>
-                <a href="all" class="selected">All</a>
+
+                {{#link-to "items.index" activeClass="selected"}}All{{/link-to}}
               </li>
               <li>
                 {{#link-to "items.active" activeClass="selected"}}Active{{/link-to}}
               </li>
               <li>
                 {{#link-to "items.completed" activeClass="seleced"}}Completed{{/link-to}}
-
               </li>
             </ul>
-
-            <button id="clear-completed">
-              Clear completed (1)
+            {{#if hasCompleted}}
+              <button id="clear-completed" {{action "clearCompleted"}}>
+                Clear completed ({{completed}})
             </button>
+            {{/if}}
           </footer>
         </section>
         <footer id="info">

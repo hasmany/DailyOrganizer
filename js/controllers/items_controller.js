@@ -11,13 +11,28 @@ Organizer.ItemsController = Ember.ArrayController.extend({
         isCompleted: false
       });
 
-      // Clear the "new Todo " text filed, model will update automatically
+      // Clear the "new item " text filed, model will update automatically
       this.set('newTitle', "");
 
       item.save();
+    },
+    clearCompleted: function() {
+      // Get all items that are completed, and delete
+      var completed = this.filterBy('isCompleted',true);
+      completed.invoke('deleteRecord');
+      completed.invoke('save');
     }
   },
+  hasCompleted: function() {
+    // Return true of there is at least 1 completed item
+    return this.get('completed') > 0;
+  }.property('completed'),
+  completed: function() {
+    // Get number of completed items
+    return this.filterBy('isCompleted',true).get('length');
+  }.property('@each.isCompleted'),
   remaining: function() {
+    // Return number of items that are not complete
     return this.filterBy('isCompleted',false).get('length');
   }.property('@each.isCompleted'),
 
