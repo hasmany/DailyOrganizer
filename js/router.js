@@ -1,15 +1,29 @@
-// Routes
-
-// At '/' or root url, render the todos template
-Organizer.Router.map(function(){
-  this.resource('items', {path: "/"});
+Todos.Router.map(function () {
+  this.resource('todos', { path: '/' }, function () {
+    // additional child routes
+    this.route('active');
+  });
 });
 
-// Ember.js proivded a route with teh default behavior of rendering
-// a matching template, (see nameing convention)
-Organizer.ItemsRoute = Ember.Route.extend({
-  model: function() {
-    // find ( // name of model, in this case fixture data)
-    return this.store.find('item');
+Todos.TodosRoute = Ember.Route.extend({
+  model: function () {
+    return this.store.find('todo');
   }
-})
+});
+
+Todos.TodosIndexRoute = Ember.Route.extend({
+  model: function () {
+    return this.modelFor('todos');
+  }
+});
+
+Todos.TodosActiveRoute = Ember.Route.extend({
+  model: function(){
+    return this.store.filter('todo', function (todo) {
+      return !todo.get('isCompleted');
+    });
+  },
+  renderTemplate: function(controller){
+    this.render('todos/index', {controller: controller});
+  }
+});

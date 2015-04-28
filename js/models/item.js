@@ -5,29 +5,27 @@
 // title : string
 // isCompleted: boolean
 
-Organizer.Item = DS.Model.extend({
+Todos.Todo = DS.Model.extend({
   title: DS.attr('string'),
   isCompleted: DS.attr('boolean')
 });
 
-// Fixture data
-Organizer.Item.FIXTURES = [
+Todos.Todo.FIXTURES = [
   {
     id: 1,
-    title: "Learn Ember.js",
+    title: 'Learn Ember.js',
     isCompleted: true
   },
   {
     id: 2,
-    title: "...",
+    title: '...',
     isCompleted: false
   },
   {
     id: 3,
-    title: "Profit",
+    title: 'Profit!',
     isCompleted: false
   }
 ];
-
 
 

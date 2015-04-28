@@ -1,17 +1,18 @@
-Organizer.ItemController = Ember.ObjectController.extend({
+Todos.TodoController = Ember.ObjectController.extend({
   actions: {
-    editItem: function () {
+    editTodo: function () {
       this.set('isEditing', true);
     },
-    acceptChanges: function() {
+    acceptChanges: function () {
       this.set('isEditing', false);
+
       if (Ember.isEmpty(this.get('model.title'))) {
         this.send('removeTodo');
       } else {
         this.get('model').save();
       }
     },
-    removeTodo: function() {
+    removeTodo: function () {
       var todo = this.get('model');
       todo.deleteRecord();
       todo.save();
@@ -19,19 +20,19 @@ Organizer.ItemController = Ember.ObjectController.extend({
   },
 
   isEditing: false,
-  isCompleted: function(key,value) {
-    // Gets the model from the iteration
+
+  isCompleted: function(key, value){
     var model = this.get('model');
+
     if (value === undefined) {
       // property being used as a getter
       return model.get('isCompleted');
     } else {
-      // Property being used as a setter
-      model.set('isCompleted',value);
+      // property being used as  setter
+      model.set('isCompleted', value);
       model.save();
       return value;
     }
-  }.property("model.isCompleted"),
+  }.property('model.isCompleted')
 });
-
 
