@@ -5,6 +5,7 @@ Organizer.Router.map(function(){
   this.resource('items', {path: "/"}, function(){
     // additonal child routes will go here
     this.route('active');
+    this.route('completed');
   });
 });
 
@@ -34,4 +35,16 @@ Organizer.ItemsActiveRoute = Ember.Route.extend({
     this.render('items/index', {controller: controller})
   }
 });
+
+Organizer.ItemsCompletedRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.filter('item',function(item) {
+      return item.get('isCompleted');
+    });
+  },
+  renderTemplate: function(controller) {
+    this.render('items/index', {controller: controller});
+  }
+});
+
 
