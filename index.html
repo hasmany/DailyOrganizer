@@ -9,13 +9,14 @@
     <script src="js/libs/handlebars-v1.3.0.js"></script>
     <script src="js/libs/ember.js"></script>
     <script src="js/libs/ember-data.js"></script>
-    <!-- Application and route files-->
+    <!-- Main Application and route files-->
     <script src="js/application.js"></script>
     <script src="js/router.js"></script>
     <!-- Models -->
     <script src="js/models/item.js"></script>
-    <!-- Controller -->
+    <!-- Controllers -->
     <script src="js/controllers/items_controller.js"></script>
+    <script src="js/controllers/item_controller.js"></script>
   </head>
   <body>
     <!-- Main container -->
@@ -35,9 +36,9 @@
        <!-- Item Display -->
         <section id="main">
           <ul id="todo-list">
-            {{#each item in model}}
+            {{#each item in model itemController="item"}}
             <li {{bind-attr class="item.isCompleted:completed"}}>
-              <input type="checkbox" class="toggle">
+              {{input type="checkbox" checked=item.isCompleted class="toggle"}}
               <label>{{item.title}}</label><button class="destroy"></button>
             </li>
             {{/each}}
