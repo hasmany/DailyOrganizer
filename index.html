@@ -7,9 +7,8 @@
     <!-- Javascript Dependencies -->
     <script src="js/libs/jquery-1.11.2.min.js"></script>
     <script src="js/libs/handlebars-v1.3.0.js"></script>
-
     <script src="js/libs/ember.js"></script>
-        <script src="js/libs/ember-data.js"></script>
+    <script src="js/libs/ember-data.js"></script>
     <!-- Main Application and route files-->
     <script src="js/application.js"></script>
     <script src="js/router.js"></script>
@@ -21,62 +20,67 @@
     <!-- Components/Helpers -->
     <script src="js/views/edit_todo_view.js"></script>
   </head>
- <body>
-  <script type="text/x-handlebars" data-template-name="todos/index">
-  <ul id="todo-list">
-    {{#each todo in model itemController="todo"}}
-      <li {{bind-attr class="todo.isCompleted:completed todo.isEditing:editing"}}>
-        {{#if todo.isEditing}}
-          {{edit-todo class="edit" value=todo.title focus-out="acceptChanges" insert-newline="acceptChanges"}}
-        {{else}}
-          {{input type="checkbox" checked=todo.isCompleted class="toggle"}}
-          <label {{action "editTodo" on="doubleClick"}}>{{todo.title}}</label><button {{action "removeTodo"}} class="destroy"></button>
-        {{/if}}
-      </li>
-    {{/each}}
-  </ul>
-  </script>
+  <body>
+    <!-- Main container -->
+    <script type="text/x-handlebars" data-template-name="items">
+      <section id="todoapp">
+        <!-- New item input -->
+        <header id="header">
+          <h1>Organizer</h1>
+          {{input
+            type="text"
+            id="new-todo"
+            placeholder="What needs to be done?"
+            value=newTitle
+            action="createItem"
+          }}
+        </header>
+       <!-- Item Display -->
+        <section id="main">
 
-  <script type="text/x-handlebars" data-template-name="todos">
+          {{outlet}}
+          <input type="checkbox" id="toggle-all">
+        </section>
+        <footer id="footer">
+          <span id="todo-count">
+            <strong>{{remaining}}</strong> {{inflection}} left
+          </span>
+          <ul id="filters">
+            <li>
+              <a href="all" class="selected">All</a>
+            </li>
+            <li>
+              {{#link-to "items.active" activeClass="selected"}}Active{{/link-to}}
+            </li>
+            <li>
+              <a href="completed" class="Completed">Completed</a>
+            </li>
+          </ul>
 
-  <section id="todoapp">
-    <header id="header">
-      <h1>todos</h1>
-      {{input type="text" id="new-todo" placeholder="What needs to be done?"
-              value=newTitle action="createTodo"}}
-    </header>
-
-      <section id="main">
-        {{outlet}}
-        <input type="checkbox" id="toggle-all">
+          <button id="clear-completed">
+            Clear completed (1)
+          </button>
+        </footer>
       </section>
+      <footer id="info">
+        <p>Double-click to edit a todo</p>
+      <footer>
+    </script>
 
-      <footer id="footer">
-        <span id="todo-count">
-          <strong>{{remaining}}</strong> {{inflection}} left</span>
-        <ul id="filters">
-          <li>
-            <a href="all">All</a>
-          </li>
-          <li>
-            {{#link-to "todos.active" activeClass="selected"}}Active{{/link-to}}
-          </li>
-          <li>
-            <a href="completed">Completed</a>
-          </li>
-        </ul>
-
-        <button id="clear-completed">
-          Clear completed (1)
-        </button>
-      </footer>
-  </section>
-
-  <footer id="info">
-    <p>Double-click to edit a todo</p>
-  </footer>
-
-  </script>
-
-</body>
+    <script type="text/x-handlebars" data-template-name="items/index">
+      <ul id="todo-list">
+        {{#each item in model itemController="item"}}
+        <li {{bind-attr class="item.isCompleted:completed item.isEditing:editing"}}>
+          {{#if item.isEditing}}
+            {{edit-item class="edit" value=item.title focus-out="acceptChanges" insert-newline="acceptChanges"}}
+            <!--<input class="edit"> -->
+          {{else}}
+           {{input type="checkbox" checked=item.isCompleted class="toggle"}}
+              <label {{action "editItem" on="doubleClick"}}>{{item.title}}</label><button {{action "removeTodo"}}class="destroy"></button>
+          {{/if}}
+        </li>
+        {{/each}}
+      <ul>
+    </script>
+  </body>
 </html>

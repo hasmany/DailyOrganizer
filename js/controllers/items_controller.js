@@ -1,38 +1,29 @@
-Todos.TodosController = Ember.ArrayController.extend({
+Organizer.ItemsController = Ember.ArrayController.extend({
   actions: {
-    createTodo: function () {
-      // Get the todo title set by the "New Todo" text field
+    createItem: function() {
+      // Get the item title by the "New Item: text field
       var title = this.get('newTitle');
       if (!title.trim()) { return; }
 
-      // Create the new Todo model
-      var todo = this.store.createRecord('todo', {
+      // Create the new Item model
+      var item = this.store.createRecord('item',{
         title: title,
         isCompleted: false
       });
 
-      // Clear the "New Todo" text field
-      this.set('newTitle', '');
+      // Clear the "new Todo " text filed, model will update automatically
+      this.set('newTitle', "");
 
-      // Save the new model
-      todo.save();
+      item.save();
     }
   },
-
-  remaining: function () {
-    return this.filterProperty('isCompleted', false).get('length');
+  remaining: function() {
+    return this.filterBy('isCompleted',false).get('length');
   }.property('@each.isCompleted'),
 
-  inflection: function () {
+  inflection: function() {
+    // Changes string plural based on number of remaining items
     var remaining = this.get('remaining');
     return remaining === 1 ? 'item' : 'items';
   }.property('remaining')
 });
-
-Todos.EditTodoView = Ember.TextField.extend({
-  didInsertElement: function () {
-    this.$().focus();
-  }
-});
-
-
