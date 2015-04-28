@@ -27,18 +27,12 @@
         <!-- Item display -->
         <section id="main">
           <ul id="todo-list">
-            <li class="completed">
+            {{#each item in model}}
+            <li {{bind-attr class="item.isCompleted:completed"}}>
               <input type="checkbox" class="toggle">
-              <label>Organizer with Ember.js</label><button class="destroy"></button>
+              <label>{{item.title}}</label><button class="destroy"></button>
             </li>
-            <li>
-              <input type="checkbox" class="toggle">
-              <label>...</label><button class="destroy"></button>
-            </li>
-            <li>
-              <input type="checkbox" class="toggle">
-              <label>Profit</label><button class="destroy"></button>
-            </li>
+            {{/each}}
           <ul>
           <input type="checkbox" id="toggle-all">
         </section>
