@@ -14,7 +14,7 @@ Organizer.Item = DS.Model.extend({
 Organizer.Item.FIXTURES = [
   {
     id: 1,
-    title: "Learn Ember.js",
+    title: "Write Daily tasks",
     isCompleted: true
   },
   {
@@ -24,7 +24,7 @@ Organizer.Item.FIXTURES = [
   },
   {
     id: 3,
-    title: "Profit",
+    title: "Be Organized",
     isCompleted: false
   }
 ];
