@@ -40,5 +40,19 @@ Organizer.ItemsController = Ember.ArrayController.extend({
     // Changes string plural based on number of remaining items
     var remaining = this.get('remaining');
     return remaining === 1 ? 'item' : 'items';
-  }.property('remaining')
+  }.property('remaining'),
+
+  allAreDone: function(key,value) {
+    if (value === undefined) {
+      // Checks length and isCompelted property, if lenght is not zero, and every
+      // item is Completed, return true
+      return !!this.get('length') && this.isEvery('isCompleted',true);
+    } else {
+      // Set each item to be true
+      this.setEach('isCompleted',value);
+      this.invoke('save');
+      return value;
+    }
+
+  }.property('@each.isCompleted')
 });
