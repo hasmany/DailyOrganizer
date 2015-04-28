@@ -6,12 +6,12 @@ Organizer.ItemController = Ember.ObjectController.extend({
     acceptChanges: function() {
       this.set('isEditing', false);
       if (Ember.isEmpty(this.get('model.title'))) {
-        this.send('removeTodo');
+        this.send('removeItem');
       } else {
         this.get('model').save();
       }
     },
-    removeTodo: function() {
+    removeItem: function() {
       var todo = this.get('model');
       todo.deleteRecord();
       todo.save();

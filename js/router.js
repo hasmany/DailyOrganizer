@@ -25,6 +25,7 @@ Organizer.ItemsIndexRoute = Ember.Route.extend({
   }
 });
 
+// Route for all items that are not complete
 Organizer.ItemsActiveRoute = Ember.Route.extend({
   model: function() {
     return this.store.filter('item',function(item) {
@@ -36,6 +37,7 @@ Organizer.ItemsActiveRoute = Ember.Route.extend({
   }
 });
 
+// Route for all items that are Completed
 Organizer.ItemsCompletedRoute = Ember.Route.extend({
   model: function() {
     return this.store.filter('item',function(item) {
