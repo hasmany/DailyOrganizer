@@ -17,5 +17,14 @@ Organizer.ItemsController = Ember.ArrayController.extend({
 
       item.save();
     }
-  }
+  },
+  remaining: function() {
+    return this.filterBy('isCompleted',false).get('length');
+  }.property('@each.isCompleted'),
+
+  inflection: function() {
+    // Changes string plural based on number of remaining items
+    var remaining = this.get('remaining');
+    return remaining === 1 ? 'item' : 'items';
+  }.property('remaining')
 });

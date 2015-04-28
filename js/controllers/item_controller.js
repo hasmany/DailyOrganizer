@@ -1,4 +1,24 @@
 Organizer.ItemController = Ember.ObjectController.extend({
+  actions: {
+    editItem: function () {
+      this.set('isEditing', true);
+    },
+    acceptChanges: function() {
+      this.set('isEditing', false);
+      if (Ember.isEmpty(this.get('model.title'))) {
+        this.send('removeTodo');
+      } else {
+        this.get('model').save();
+      }
+    },
+    removeTodo: function() {
+      var todo = this.get('model');
+      todo.deleteRecord();
+      todo.save();
+    }
+  },
+
+  isEditing: false,
   isCompleted: function(key,value) {
     // Gets the model from the iteration
     var model = this.get('model');
@@ -11,7 +31,7 @@ Organizer.ItemController = Ember.ObjectController.extend({
       model.save();
       return value;
     }
-  }.property("model.isCompleted")
+  }.property("model.isCompleted"),
 });
 
 
