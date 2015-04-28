@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Hubert Nguyen • Hub-Organzier</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- javascript dependencies -->
+    <!-- Javascript Dependencies -->
     <script src="js/libs/jquery-1.11.2.min.js"></script>
     <script src="js/libs/handlebars-v1.3.0.js"></script>
     <script src="js/libs/ember.js"></script>
@@ -14,17 +14,25 @@
     <script src="js/router.js"></script>
     <!-- Models -->
     <script src="js/models/item.js"></script>
+    <!-- Controller -->
+    <script src="js/controllers/items_controller.js"></script>
   </head>
   <body>
     <!-- Main container -->
-    <script type="text/x-handlebars" data-template-name="todos">
+    <script type="text/x-handlebars" data-template-name="items">
       <section id="todoapp">
         <!-- New item input -->
         <header id="header">
           <h1>Organizer</h1>
-          <input type="text" id="new-todo" placeholder="What needs to be done?"/>
+          {{input
+            type="text"
+            id="new-todo"
+            placeholder="What needs to be done?"
+            value=newTitle
+            action="createItem"
+          }}
         </header>
-        <!-- Item display -->
+       <!-- Item Display -->
         <section id="main">
           <ul id="todo-list">
             {{#each item in model}}
