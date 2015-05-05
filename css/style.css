@@ -331,7 +331,7 @@ label[for='toggle-all'] {
 	right: 0;
 	bottom: 31px;
 	left: 0;
-	height: 50px;
+	height: 70px;
 	z-index: -1;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3),
 				0 6px 0 -3px rgba(255, 255, 255, 0.8),
@@ -358,10 +358,15 @@ label[for='toggle-all'] {
 	display: inline;
 }
 
+
 #filters li a {
 	color: #83756f;
 	margin: 2px;
 	text-decoration: none;
+}
+
+#filters li a:hover {
+	font-weight: bold;
 }
 
 #filters li a.selected {
@@ -374,7 +379,7 @@ label[for='toggle-all'] {
 	line-height: 20px;
 	text-decoration: none;
 	background: rgba(0, 0, 0, 0.1);
-	font-size: 11px;
+	font-size: 15px;
 	padding: 0 10px;
 	border-radius: 3px;
 	box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.2);
@@ -397,6 +402,17 @@ label[for='toggle-all'] {
 	color: inherit;
 }
 
+.mobile {
+	display: none;
+}
+
+.hidden{
+	display:none;
+}
+
+/*#################*/
+/*# MEDIA QUERIES #*/
+/*################*/
 /*
 	Hack to remove background from Mobile Safari.
 	Can't use it globally since it destroys checkboxes in Firefox and Opera
@@ -423,15 +439,66 @@ label[for='toggle-all'] {
 	}
 }
 
-.hidden{
-	display:none;
-}
 
 @media (max-width: 553px) {
-	#organizer h1 {
-		font-size: 40px;
+
+	.container {
+		margin-top: 100px;
 	}
+
+	#organizer h1 {
+		display: none;
+	}
+
 	#new-item {
 		font-size: 20px;
 	}
+
+	#footer {
+		text-align: initial;
+	}
+
+	#todo-count {
+		float: right;
+		margin-bottom: 10px;
+	}
+
+	#filters {
+		float: left;
+		margin-left: 14px;
+	}
+
+	#filters li {
+		display: list-item;
+	}
+
+	#footer:before {
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3),
+			0 89px 0 14px rgba(235, 235, 235, 0.8),
+			0 7px 1px -3px rgba(0, 0, 0, 0.3),
+			0 43px 0 -6px rgba(255, 255, 255, 0.8),
+			0 44px 2px -6px rgba(0, 0, 0, 0.2);
+	}
+
+	#clear-completed {
+		font-size: 1.1em;
+		padding-top: 2.5px;
+		padding-bottom: 2.5px;
+		margin-right: -10px;
+		clear: right;
+	}
+
+	.mobile {
+		text-decoration: underline;
+		font-size: 1.2em;
+		display: block;
+		margin: 0 0 10px 0;
+	}
+
+	#item-list li {
+		font-size: 19px;
+	}
+
 }
+
+
