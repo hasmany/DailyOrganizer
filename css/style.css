@@ -237,15 +237,20 @@ label[for='toggle-all'] {
 }
 
 #item-list li .toggle:after {
-	content: '✔';
+	content: '\2714';
 	line-height: 43px; /* 40 + a couple of pixels visual adjustment */
 	font-size: 20px;
-	color: #d9d9d9;
+	color: grey;
 	text-shadow: 0 -1px 0 #bfbfbf;
 }
 
 #item-list li .toggle:checked:after {
-	color: #85ada7;
+	color: green;
+	-webkit-transition: color 1s;
+	-moz-transition: color 1s;
+	-ms-transition: color 1s;
+	-o-transition: color 1s;
+	transition: color 1s;
 	text-shadow: 0 1px 0 #669991;
 	bottom: 1px;
 	position: relative;
@@ -257,15 +262,16 @@ label[for='toggle-all'] {
 	margin-left: 45px;
 	display: block;
 	line-height: 1.2;
-	-webkit-transition: color 0.4s;
-	-moz-transition: color 0.4s;
-	-ms-transition: color 0.4s;
-	-o-transition: color 0.4s;
-	transition: color 0.4s;
+	-webkit-transition: color 1s;
+	-moz-transition: color 1s;
+	-ms-transition: color 1s;
+	-o-transition: color 1s;
+	transition: color 1s;
 }
 
 #item-list li.completed label {
 	color: #a9a9a9;
+	opacity: .4;
 	text-decoration: line-through;
 }
 
@@ -452,6 +458,10 @@ label[for='toggle-all'] {
 
 	#organizer h1 {
 		display: none;
+	}
+
+	.header input {
+		placeholder: "Tasks?";
 	}
 
 	#new-item {
