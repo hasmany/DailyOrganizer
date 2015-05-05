@@ -446,6 +446,10 @@ label[for='toggle-all'] {
 		margin-top: 92px;
 	}
 
+	#info {
+		margin: 0;
+	}
+
 	#organizer h1 {
 		display: none;
 	}
