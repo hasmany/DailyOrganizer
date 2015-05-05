@@ -443,7 +443,7 @@ label[for='toggle-all'] {
 @media (max-width: 553px) {
 
 	.container {
-		margin-top: 100px;
+		margin-top: 92px;
 	}
 
 	#organizer h1 {
@@ -474,7 +474,7 @@ label[for='toggle-all'] {
 
 	#footer:before {
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3),
-			0 89px 0 14px rgba(235, 235, 235, 0.8),
+			0 89px 0 14px rgba(235, 235, 235, 0.9),
 			0 7px 1px -3px rgba(0, 0, 0, 0.3),
 			0 43px 0 -6px rgba(255, 255, 255, 0.8),
 			0 44px 2px -6px rgba(0, 0, 0, 0.2);
