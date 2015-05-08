@@ -1,6 +1,8 @@
 Daily Organizer
 ===
 
+Hosted at: <http://hasmany.github.io/DailyOrganizer/>
+
 A Daily Organizer to keep track of your tasks. Built on the Ember.js framework and uses HTML5 local storage for persistence.
 
 Tech
